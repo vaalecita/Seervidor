@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link href="<link href="https://fonts.cdnfonts.com/css/huglove" rel="stylesheet">
-	<title>Pagina1</title>
+	<link href="https://fonts.cdnfonts.com/css/mondera-2" rel="stylesheet">
+            <title>Pagina1</title>
 </head>
 <body>
 	<div style="margin: 24px;">
@@ -31,12 +31,27 @@
     	</div>
     </nav>
 </div>
-<div class="jumbotron jumbotron-fluid" style="background-color: #D4AFB9">
-  <div class="container">
-    <h1 class="display-4">Comida, postres y bebidas</h1>
-    <p class="lead">disfruta tu comida<3</p>
-  </div>
-</div>
+<titulo>Menu de restaurante</titulo>
+   
+   <div id="menu"></div>
+   <script type="text/javascript">
+       fetch ('menu.json')
+       .then(response=>response.json())
+       .then(data=>{
+        const menu=document.getElementById('menu');
+        data.menu.forEach(item=>{
+            const container=document.createElement('div');
+            container.classList.add('item');
+            container.innerHTML=`
+            <img src="{item.imagen}" alt="${item.nombre}"> ${item.nombre}<br>
+            <p>$(item.nombre}</p>
+            <p class="precio">${item.precio.toFixed(2)} pesos</p>
+            `;
+            menu.appendChild(container);
 
+       });
+    });
+
+   </script>
 </body>
 </html>
